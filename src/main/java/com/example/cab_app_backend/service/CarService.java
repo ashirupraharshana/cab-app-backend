@@ -43,6 +43,7 @@ public class CarService {
             car.setCapacity(carDetails.getCapacity());
             car.setStatus(carDetails.getStatus());
             car.setPricePerKm(carDetails.getPricePerKm());
+            car.setPhoto(carDetails.getPhoto());
             return carRepository.save(car);
         }).orElse(null);
     }
