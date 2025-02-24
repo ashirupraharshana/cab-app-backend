@@ -15,4 +15,5 @@ public class Car {
     private int capacity;   // Engine Capacity in CC
     private int status;  // Available, In Use, Maintenance
     private double pricePerKm;
+    private String photo;
 }

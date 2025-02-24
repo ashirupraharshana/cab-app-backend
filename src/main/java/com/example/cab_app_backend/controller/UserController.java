@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 import java.util.Optional;
 
+@CrossOrigin(origins ="*")
 @RestController
 @RequestMapping("/users")
+
 public class UserController {
 
     @Autowired
@@ -84,6 +86,7 @@ public class UserController {
 
 
     // Get all users
+
     @GetMapping("/all")
     public Iterable<User> getAllUsers() {
         return userService.getAllUsers();
