@@ -10,7 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
     public class Booking{
         @Id
         private String id;
-        private String userid;
         private String carid;
         private String driverid;
         private String location;

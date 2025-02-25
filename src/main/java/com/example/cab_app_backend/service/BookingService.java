@@ -29,10 +29,7 @@ public class BookingService {
         return bookingRepository.findById(id);
     }
 
-    // Get bookings by User ID
-    public List<Booking> getBookingsByUserId(String userid) {
-        return bookingRepository.findByUserid(userid);
-    }
+
 
     // Get bookings by Driver ID
     public List<Booking> getBookingsByDriverId(String driverid) {
@@ -47,7 +44,6 @@ public class BookingService {
     // Update booking details
     public Booking updateBooking(String id, Booking bookingDetails) {
         return bookingRepository.findById(id).map(booking -> {
-            booking.setUserid(bookingDetails.getUserid());
             booking.setCarid(bookingDetails.getCarid());
             booking.setDriverid(bookingDetails.getDriverid());
             booking.setLocation(bookingDetails.getLocation());
