@@ -35,6 +35,11 @@ public class BookingController {
         return bookingService.getBookingById(id);
     }
 
+    @GetMapping("/user/{userid}")
+    public List<Booking> getBookingsByUserId(@PathVariable String userid) {
+        return bookingService.getBookingsByUserId(userid);
+    }
+
     // Get bookings by Driver ID
     @GetMapping("/driver/{driverid}")
     public List<Booking> getBookingsByDriverId(@PathVariable String driverid) {

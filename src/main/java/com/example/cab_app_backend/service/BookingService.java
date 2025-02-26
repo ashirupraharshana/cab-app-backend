@@ -28,8 +28,10 @@ public class BookingService {
     public Optional<Booking> getBookingById(String id) {
         return bookingRepository.findById(id);
     }
+    public List<Booking> getBookingsByUserId(String userid) {
 
-
+        return bookingRepository.findByUserid(userid);
+    }
 
     // Get bookings by Driver ID
     public List<Booking> getBookingsByDriverId(String driverid) {
@@ -44,6 +46,7 @@ public class BookingService {
     // Update booking details
     public Booking updateBooking(String id, Booking bookingDetails) {
         return bookingRepository.findById(id).map(booking -> {
+            booking.setUserid(bookingDetails.getUserid());
             booking.setCarid(bookingDetails.getCarid());
             booking.setDriverid(bookingDetails.getDriverid());
             booking.setLocation(bookingDetails.getLocation());
