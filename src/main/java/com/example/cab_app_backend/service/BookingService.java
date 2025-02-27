@@ -74,4 +74,18 @@ public class BookingService {
         }).orElseThrow(() -> new RuntimeException("Booking not found with ID: " + id));
     }
 
+    public Booking updateBookingStatus(String id, int status) {
+        return bookingRepository.findById(id).map(booking -> {
+            booking.setBookstatus(status);
+            return bookingRepository.save(booking);
+        }).orElseThrow(() -> new RuntimeException("Booking not found with ID: " + id));
+    }
+    public Booking updateBookingStatus1(String id, int status) {
+        return bookingRepository.findById(id).map(booking -> {
+            booking.setBookstatus(status);
+            return bookingRepository.save(booking);
+        }).orElseThrow(() -> new RuntimeException("Booking not found with ID: " + id));
+    }
+
+
 }

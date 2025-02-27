@@ -40,6 +40,22 @@ public class BookingController {
         return bookingService.getBookingsByUserId(userid);
     }
 
+    //update bookingstatus ==2
+    @PutMapping("/update/{id}/status2")
+    public Booking updateBookingStatus(@PathVariable String id) {
+        return bookingService.updateBookingStatus(id, 2);
+    }
+
+    //update bookingstatus ==1
+    @PutMapping("/update/{id}/status1")
+    public Booking updateBookingStatus1(@PathVariable String id) {
+        return bookingService.updateBookingStatus1(id, 1);
+    }
+
+
+
+
+
     // Get bookings by Driver ID
     @GetMapping("/driver/{driverid}")
     public List<Booking> getBookingsByDriverId(@PathVariable String driverid) {
@@ -64,5 +80,7 @@ public class BookingController {
         return bookingService.deleteBooking(id);
     }
 }
+
+
 
 
