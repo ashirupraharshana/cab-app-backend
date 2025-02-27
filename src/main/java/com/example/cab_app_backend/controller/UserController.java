@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -31,6 +32,11 @@ public class UserController {
     public String registerstaff(@RequestBody User user) {
         return userService.registerstaff(user);
     }
+    @GetMapping("/staff")
+    public List<User> getStaffUsers() {
+        return userService.getStaffUsers();
+    }
+
 
 
     // Login user

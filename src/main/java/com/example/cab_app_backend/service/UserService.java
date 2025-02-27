@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -26,6 +27,9 @@ public class UserService {
 
         userRepository.save(user);
         return "User registered successfully!";
+    }
+    public List<User> getStaffUsers() {
+        return userRepository.findByUserrole(1); // Fetch only staff users
     }
 
     //staff reg
@@ -48,6 +52,7 @@ public class UserService {
             Map<String, Object> response = new HashMap<>();
             response.put("message", "Login successful!");
             response.put("userrole", user.get().getUserrole()); // Include userrole
+            response.put("userid", user.get().getId());
             return response;
         }
 
