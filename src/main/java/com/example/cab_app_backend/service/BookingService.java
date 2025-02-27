@@ -66,4 +66,12 @@ public class BookingService {
         }
         return "Booking not found!";
     }
+
+    public Booking assignDriver(String id, String driverid) {
+        return bookingRepository.findById(id).map(booking -> {
+            booking.setDriverid(driverid);
+            return bookingRepository.save(booking);
+        }).orElseThrow(() -> new RuntimeException("Booking not found with ID: " + id));
+    }
+
 }

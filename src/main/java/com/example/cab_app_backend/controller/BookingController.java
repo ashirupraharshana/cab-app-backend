@@ -52,11 +52,11 @@ public class BookingController {
         return bookingService.getBookingsByStatus(bookstatus);
     }
 
-    // Update a booking
-    @PutMapping("/update/{id}")
-    public Booking updateBooking(@PathVariable String id, @RequestBody Booking booking) {
-        return bookingService.updateBooking(id, booking);
+    @PutMapping("/update/{id}/driver")
+    public Booking assignDriver(@PathVariable String id, @RequestBody Booking booking) {
+        return bookingService.assignDriver(id, booking.getDriverid());
     }
+
 
     // Delete a booking
     @DeleteMapping("/delete/{id}")
@@ -64,3 +64,5 @@ public class BookingController {
         return bookingService.deleteBooking(id);
     }
 }
+
+
