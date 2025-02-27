@@ -3,9 +3,12 @@ package com.example.cab_app_backend.controller;
 import com.example.cab_app_backend.Model.Booking;
 import com.example.cab_app_backend.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @CrossOrigin(origins ="*")
@@ -52,7 +55,21 @@ public class BookingController {
         return bookingService.updateBookingStatus1(id, 1);
     }
 
+    @PutMapping("/update/{id}/totalfee")
+    public ResponseEntity<?> updateTotalFee(@PathVariable String id, @RequestBody Map<String, Double> request) {
+        if (!request.containsKey("totalfee")) {
+            return ResponseEntity.badRequest().body("Missing 'totalfee' field in request body");
+        }
 
+        double totalfee = request.get("totalfee");
+        Booking updatedBooking = bookingService.updateTotalFee(id, totalfee);
+
+        if (updatedBooking == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Booking ID not found");
+        }
+
+        return ResponseEntity.ok(updatedBooking);
+    }
 
 
 

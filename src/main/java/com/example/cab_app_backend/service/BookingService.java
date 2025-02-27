@@ -86,6 +86,13 @@ public class BookingService {
             return bookingRepository.save(booking);
         }).orElseThrow(() -> new RuntimeException("Booking not found with ID: " + id));
     }
+    public Booking updateTotalFee(String id, double totalfee) {
+        return bookingRepository.findById(id).map(booking -> {
+            booking.setTotalfee(totalfee);
+            return bookingRepository.save(booking);
+        }).orElse(null);
+    }
+
 
 
 }
