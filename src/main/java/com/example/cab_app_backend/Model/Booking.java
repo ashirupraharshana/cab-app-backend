@@ -18,6 +18,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
         private int bookstatus = 0;
         private double totalfee;
         private int paymentstatus = 0;
-        private int travalDistance = 0;
+        private int travelDistance = 0;
     }
 
