@@ -71,8 +71,6 @@ public class BookingController {
         return ResponseEntity.ok(updatedBooking);
     }
 
-
-
     // Get bookings by Driver ID
     @GetMapping("/driver/{driverid}")
     public List<Booking> getBookingsByDriverId(@PathVariable String driverid) {
@@ -89,6 +87,31 @@ public class BookingController {
     public Booking assignDriver(@PathVariable String id, @RequestBody Booking booking) {
         return bookingService.assignDriver(id, booking.getDriverid());
     }
+
+    @PutMapping("/update/{id}/paymentstatus")
+    public ResponseEntity<Booking> updatePaymentStatus(@PathVariable String id) {
+        try {
+            Booking updatedBooking = bookingService.updatePaymentStatus(id, 1);
+            return ResponseEntity.ok(updatedBooking);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
+
+    @PutMapping("/update/{id}/traveldistance")
+    public ResponseEntity<?> updateTravelDistance(@PathVariable String id, @RequestBody Map<String, Integer> request) {
+        if (!request.containsKey("travelDistance")) {
+            return ResponseEntity.badRequest().body("Missing 'travelDistance' field in request body");
+        }
+
+        int travelDistance = request.get("travelDistance");
+        Booking updatedBooking = bookingService.updateTravelDistance(id, travelDistance);
+
+        return ResponseEntity.ok(updatedBooking);
+    }
+
+
 
 
     // Delete a booking

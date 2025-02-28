@@ -92,7 +92,18 @@ public class BookingService {
             return bookingRepository.save(booking);
         }).orElse(null);
     }
+//update payment staus
+    public Booking updatePaymentStatus(String id, int paymentstatus) {
+        return bookingRepository.findById(id).map(booking -> {
+            booking.setPaymentstatus(paymentstatus);
+            return bookingRepository.save(booking);
+        }).orElseThrow(() -> new RuntimeException("Booking not found with ID: " + id));
+    }
 
-
-
+    public Booking updateTravelDistance(String id, int distance) {
+        return bookingRepository.findById(id).map(booking -> {
+            booking.setTravelDistance(distance); // Fix here
+            return bookingRepository.save(booking);
+        }).orElseThrow(() -> new RuntimeException("Booking not found with ID: " + id));
+    }
 }
