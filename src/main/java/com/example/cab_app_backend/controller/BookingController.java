@@ -88,16 +88,11 @@ public class BookingController {
         return bookingService.assignDriver(id, booking.getDriverid());
     }
 
+    //update payment status
     @PutMapping("/update/{id}/paymentstatus")
-    public ResponseEntity<Booking> updatePaymentStatus(@PathVariable String id) {
-        try {
-            Booking updatedBooking = bookingService.updatePaymentStatus(id, 1);
-            return ResponseEntity.ok(updatedBooking);
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
+    public Booking updatePaymentStatus(@PathVariable String id) {
+        return bookingService.updatePaymentStatus(id, 1);
     }
-
 
     @PutMapping("/update/{id}/traveldistance")
     public ResponseEntity<?> updateTravelDistance(@PathVariable String id, @RequestBody Map<String, Integer> request) {
