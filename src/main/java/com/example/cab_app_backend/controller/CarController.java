@@ -52,4 +52,11 @@ public class CarController {
     public String deleteCar(@PathVariable String id) {
         return carService.deleteCar(id);
     }
+
+    @PutMapping("/updateStatus/{id}")
+    public Car updateCarStatus(@PathVariable String id) {
+        return carService.updateCarStatusToAvailable(id);
+    }
+
 }
+
