@@ -19,5 +19,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
         private double totalfee;
         private int paymentstatus = 0;
         private int travelDistance = 0;
+        private int idNumber = 0;
     }
 

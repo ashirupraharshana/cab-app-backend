@@ -54,6 +54,7 @@ public class BookingService {
             booking.setBookstatus(bookingDetails.getBookstatus());
             booking.setTotalfee(bookingDetails.getTotalfee());
             booking.setPaymentstatus(bookingDetails.getPaymentstatus());
+            booking.setIdNumber(bookingDetails.getIdNumber());
             return bookingRepository.save(booking);
         }).orElse(null);
     }
