@@ -106,14 +106,18 @@ public class BookingController {
         return ResponseEntity.ok(updatedBooking);
     }
 
-
-
-
     // Delete a booking
     @DeleteMapping("/delete/{id}")
     public String deleteBooking(@PathVariable String id) {
         return bookingService.deleteBooking(id);
     }
+
+
+    @GetMapping("/idNumber/{idNumber}")
+    public List<Booking> getBookingsByIdNumber(@PathVariable int idNumber) {
+        return bookingService.getBookingsByIdNumber(idNumber);
+    }
+
 }
 
 

@@ -107,6 +107,10 @@ public class BookingService {
             return bookingRepository.save(booking);
         }).orElseThrow(() -> new RuntimeException("Booking not found with ID: " + id));
     }
+    public List<Booking> getBookingsByIdNumber(int idNumber) {
+        return bookingRepository.findByIdNumber(idNumber);
+    }
+
 
 
 
