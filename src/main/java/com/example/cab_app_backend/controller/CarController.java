@@ -55,8 +55,14 @@ public class CarController {
 
     @PutMapping("/updateStatus/{id}")
     public Car updateCarStatus(@PathVariable String id) {
+        return carService.updateCarStatusToInUse(id);
+    }
+
+    @PutMapping("/updateStatusToAvailable/{id}")
+    public Car updateCarStatusToAvailable(@PathVariable String id) {
         return carService.updateCarStatusToAvailable(id);
     }
+
 
 }
 

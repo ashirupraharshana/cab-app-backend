@@ -56,11 +56,19 @@ public class CarService {
         }
         return "Car not found!";
     }
-    public Car updateCarStatusToAvailable(String id) {
+    public Car updateCarStatusToInUse(String id) {
         return carRepository.findById(id).map(car -> {
             car.setStatus(1);  // Set status to 1 (Available)
             return carRepository.save(car);
         }).orElse(null);
     }
+    public Car updateCarStatusToAvailable(String id) {
+        return carRepository.findById(id).map(car -> {
+            car.setStatus(0);  // Set status to 0 (Available)
+            return carRepository.save(car);
+        }).orElse(null);
+    }
+
+
 
 }
