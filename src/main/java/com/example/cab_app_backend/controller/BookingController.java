@@ -49,6 +49,11 @@ public class BookingController {
         return bookingService.updateBookingStatus(id, 2);
     }
 
+    @PutMapping("/update/{id}/status3")
+    public ResponseEntity<Booking> updateBookingStatusTo3(@PathVariable String id) {
+        Booking updatedBooking = bookingService.updateBookingStatusTo3(id);
+        return ResponseEntity.ok(updatedBooking);
+    }
     //update bookingstatus ==1
     @PutMapping("/update/{id}/status1")
     public Booking updateBookingStatus1(@PathVariable String id) {

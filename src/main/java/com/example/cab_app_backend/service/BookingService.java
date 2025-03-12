@@ -110,7 +110,16 @@ public class BookingService {
     public List<Booking> getBookingsByIdNumber(int idNumber) {
         return bookingRepository.findByIdNumber(idNumber);
     }
+    public Booking updateBookingStatus3(String id, int status) {
+        return bookingRepository.findById(id).map(booking -> {
+            booking.setBookstatus(status);
+            return bookingRepository.save(booking);
+        }).orElseThrow(() -> new RuntimeException("Booking not found with ID: " + id));
+    }
 
+    public Booking updateBookingStatusTo3(String id) {
+        return updateBookingStatus3(id, 3);
+    }
 
 
 
